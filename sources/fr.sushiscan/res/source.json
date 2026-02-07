@@ -2,12 +2,12 @@
 	"info": {
 		"id": "fr.sushiscan",
 		"name": "Sushiscan",
-		"version": 8,
+		"version": 9,
 		"url": "https://sushiscan.net",
 		"contentRating": 1,
 		"languages": ["fr"]
 	},
 	"config": {
-		"breakingChangeVersion": 8
+		"breakingChangeVersion": 9
 	}
 }

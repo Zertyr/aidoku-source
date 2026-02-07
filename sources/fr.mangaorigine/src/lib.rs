@@ -2,11 +2,11 @@
 use aidoku::{Source, prelude::*};
 use mangathemesia::{Impl, MangaThemesia, Params};
 
-const BASE_URL: &str = "https://sushiscan.net";
+const BASE_URL: &str = "https://mangas-origines.fr";
 
-struct Sushiscan;
+struct MangaOrigine;
 
-impl Impl for Sushiscan {
+impl Impl for MangaOrigine {
 	fn new() -> Self {
 		Self
 	}
@@ -23,7 +23,7 @@ impl Impl for Sushiscan {
 }
 
 register_source!(
-	MangaThemesia<Sushiscan>,
+	MangaThemesia<MangaOrigine>,
 	Home,
 	ImageRequestProvider,
 	DeepLinkHandler
