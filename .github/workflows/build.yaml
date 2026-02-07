@@ -19,6 +19,10 @@ jobs:
       SCCACHE_CACHE_SIZE: 2G
       SCCACHE_VERSION: 0.3.0
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+      pages: write
     steps:
       - uses: actions/checkout@v4
       - uses: google/wireit@setup-github-actions-caching/v1
