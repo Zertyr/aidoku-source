@@ -65,18 +65,18 @@ jobs:
       - name: Build source list
         run: |
           aidoku build sources/*/package.aix --name "Aidoku Community Sources"
+      - name: Setup Pages
+        if: ${{ github.ref == 'refs/heads/main' }}
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        if: ${{ github.ref == 'refs/heads/main' }}
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './public'
       - name: Deploy to GitHub Pages
         if: ${{ github.ref == 'refs/heads/main' }}
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout --orphan gh-pages
-          git reset --hard
-          git add -A
-          git commit -m "Update source list"
-          git push origin gh-pages --force
-        env:
-          GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        id: deployment
+        uses: actions/deploy-pages@v4
       - name: Uploading packages as artifact
         uses: actions/upload-artifact@v4
         if: always()
