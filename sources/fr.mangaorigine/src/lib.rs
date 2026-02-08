@@ -35,7 +35,7 @@ impl Impl for MangaOrigine {
 					format!("page/{}/", page).into()
 				}
 			},
-			// Sélecteurs spécifiques à MangaOrigine - corrigés
+			// Sélecteurs spécifiques à MangaOrigine - vérifiés dans le HTML
 			search_manga_selector: "div.page-listing-item".into(),
 			search_manga_url_selector: "div.item-thumb a".into(),
 			search_manga_title_selector: "div.post-title h3 a".into(),
