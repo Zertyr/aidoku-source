@@ -2,12 +2,12 @@
 	"info": {
 		"id": "fr.mangasorigines",
 		"name": "MangasOrigines",
-		"version": 4,
+		"version": 5,
 		"url": "https://mangas-origines.fr/",
 		"contentRating": 1,
 		"languages": ["fr"]
 	},
 	"config": {
-		"breakingChangeVersion": 4
+		"breakingChangeVersion": 5
 	}
 }
