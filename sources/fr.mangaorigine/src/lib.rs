@@ -22,7 +22,7 @@ impl Impl for MangaOrigine {
 			use_style_images: false,
 			use_load_more_request: LoadMoreStrategy::Never,
 			filter_non_manga_items: true,
-			default_viewer: aidoku::Viewer::Default,
+			default_viewer: aidoku::Viewer::Unknown,
 			datetime_format: "d MMMM yyyy".into(),
 			datetime_locale: "fr_FR".into(),
 			datetime_timezone: "Europe/Paris".into(),
