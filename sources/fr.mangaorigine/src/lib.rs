@@ -3,6 +3,7 @@ use aidoku::{Source, prelude::*, MangaStatus};
 use madara::{Impl, Madara, Params, LoadMoreStrategy};
 use aidoku::alloc::String;
 
+// URL de base pour MangaOrigine - Vérifier que c'est bien l'URL correcte
 const BASE_URL: &str = "https://mangas-origines.fr";
 
 struct MangaOrigine;
@@ -15,15 +16,17 @@ impl Impl for MangaOrigine {
 	fn params(&self) -> Params {
 		Params {
 			base_url: BASE_URL.into(),
+			// Chemin pour les URLs des mangas sur MangaOrigine
 			source_path: "oeuvre".into(),
 			use_new_chapter_endpoint: false,
 			use_style_images: false,
-			use_load_more_request: LoadMoreStrategy::AutoDetect,
+			use_load_more_request: LoadMoreStrategy::Never,
 			filter_non_manga_items: true,
-			default_viewer: aidoku::Viewer::default(),
+			default_viewer: aidoku::Viewer::Default,
 			datetime_format: "d MMMM yyyy".into(),
 			datetime_locale: "fr_FR".into(),
 			datetime_timezone: "Europe/Paris".into(),
+			// Endpoint pour la page des genres
 			genre_endpoint: "/catalogue".into(),
 			search_page: |page| {
 				if page == 1 {
@@ -32,20 +35,21 @@ impl Impl for MangaOrigine {
 					format!("page/{}/", page).into()
 				}
 			},
+			// Sélecteurs spécifiques à MangaOrigine
 			search_manga_selector: "div.page-item-detail.manga".into(),
 			search_manga_url_selector: "div.post-title a".into(),
 			search_manga_title_selector: "div.post-title a".into(),
 			search_manga_cover_selector: "img".into(),
-			// Details selectors
-			details_title_selector: "div.post-title h3, div.post-title h1, #manga-title > h1".into(),
+			// Details selectors - spécifiques à MangaOrigine
+			details_title_selector: "div.post-title h3, div.post-title h1".into(),
 			details_cover_selector: "div.summary_image img".into(),
-			details_author_selector: "div.author-content > a, div.manga-authors > a".into(),
+			details_author_selector: "div.author-content > a".into(),
 			details_artist_selector: "div.artist-content > a".into(),
 			details_description_selector: "div.summary_content".into(),
 			details_tag_selector: "div.genres-content > a".into(),
 			details_status_selector: "div.post-content_item:contains('État') span.summary-content".into(),
 			details_type_selector: "".into(),
-			// Chapter selectors
+			// Chapter selectors - spécifiques à MangaOrigine
 			chapter_selector: "ul.main li.wp-manga-chapter".into(),
 			chapter_url_selector: "a".into(),
 			chapter_title_selector: "a".into(),
@@ -53,7 +57,7 @@ impl Impl for MangaOrigine {
 			chapter_thumbnail_selector: "".into(),
 			// Page list selector
 			page_list_selector: "div.reading-content img".into(),
-			// Protectors (not used for MangaOrigine)
+			// Désactiver les protecteurs de chapitre
 			chapter_protector_selector: "".into(),
 			chapter_protector_password_prefix: "".into(),
 			chapter_protector_data_prefix: "".into(),
